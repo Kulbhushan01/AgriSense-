@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriSense AI Agent - Live Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="logo-icon">🌿</span>
+                <span class="logo-text">AgriSense AI Agent</span>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-primary" onclick="resetDemo()">🔄 Reset Demo</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero-demo">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Experience AgriSense AI</h1>
+                <p>Interact with our intelligent farming assistant that provides real-time crop guidance, weather analysis, and organic farming recommendations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="demo-container">
+        <div class="container">
+            <div class="demo-layout">
+                
+                <aside class="farm-info-panel">
+                    <h2>🌾 Your Farm Profile</h2>
+                    
+                    <div class="info-card">
+                        <h3>📍 Location</h3>
+                        <p><strong>Marathwada, Maharashtra</strong></p>
+                        <p class="small">Region: Drought-prone area</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>🌡️ Current Conditions</h3>
+                        <div class="weather-grid">
+                            <div class="weather-item">
+                                <span class="icon">🌡️</span>
+                                <span class="value">32°C</span>
+                                <span class="label">Temperature</span>
+                            </div>
+                            <div class="weather-item">
+                                <span class="icon">💧</span>
+                                <span class="value">45%</span>
+                                <span class="label">Humidity</span>
+                            </div>
+                            <div class="weather-item">
+                                <span class="icon">🌧️</span>
+                                <span class="value">20%</span>
+                                <span class="label">Rain Chance</span>
+                            </div>
+                            <div class="weather-item">
+                                <span class="icon">💨</span>
+                                <span class="value">12 km/h</span>
+                                <span class="label">Wind Speed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>🌱 Current Crops</h3>
+                        <div class="crop-list">
+                            <div class="crop-item">
+                                <span class="crop-icon">🌾</span>
+                                <div class="crop-details">
+                                    <strong>Cotton</strong>
+                                    <span class="crop-stage">Flowering Stage</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>📊 Farm Stats</h3>
+                        <div class="stat-item">
+                            <span class="stat-label">Farm Size:</span>
+                            <span class="stat-value">5 acres</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Soil Type:</span>
+                            <span class="stat-value">Clay Loam</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Irrigation:</span>
+                            <span class="stat-value">Drip System</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Organic Status:</span>
+                            <span class="stat-value">✅ Certified</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <main class="chat-interface">
+                    <div class="chat-header">
+                        <div class="agent-info">
+                            <div class="agent-avatar">🤖</div>
+                            <div class="agent-details">
+                                <h3>AgriSense AI Assistant</h3>
+                                <span class="status-indicator">● Online</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message agent-message">
+                            <div class="message-avatar">🤖</div>
+                            <div class="message-content">
+                                <div class="message-text">
+                                    <p>🌿 Welcome to AgriSense! I'm your AI farming assistant.</p>
+                                    <p>I can help you with:</p>
+                                    <ul>
+                                        <li>Real-time crop guidance and recommendations</li>
+                                        <li>Weather-based farming decisions</li>
+                                        <li>Organic pest control solutions</li>
+                                        <li>Soil health management</li>
+                                        <li>Irrigation scheduling</li>
+                                    </ul>
+                                    <p>How can I assist you today?</p>
+                                </div>
+                                <span class="message-time">Just now</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-area">
+                        <div class="quick-actions">
+                            <button class="quick-btn" onclick="askQuestion('What should I do about pests on my cotton crop?')">
+                                🐛 Pest Control
+                            </button>
+                            <button class="quick-btn" onclick="askQuestion('How much water should I give to cotton in this weather?')">
+                                💧 Irrigation Advice
+                            </button>
+                            <button class="quick-btn" onclick="askQuestion('What organic fertilizer should I use now?')">
+                                🌱 Fertilizer Guide
+                            </button>
+                            <button class="quick-btn" onclick="askQuestion('When should I harvest my cotton crop?')">
+                                ⏰ Harvest Timing
+                            </button>
+                        </div>
+                        <div class="input-wrapper">
+                            <input 
+                                type="text" 
+                                id="userInput" 
+                                placeholder="Ask me anything about your farm..."
+                                onkeypress="handleKeyPress(event)"
+                            >
+                            <button class="send-btn" onclick="sendMessage()">
+                                <span>Send</span>
+                                <span class="icon">📤</span>
+                            </button>
+                        </div>
+                    </div>
+                </main>
+
+                <aside class="insights-panel">
+                    <h2>💡 AI Insights</h2>
+
+                    <div class="insight-card alert-high">
+                        <div class="insight-header">
+                            <span class="insight-icon">⚠️</span>
+                            <span class="insight-priority">High Priority</span>
+                        </div>
+                        <h3>Pest Alert</h3>
+                        <p>Pink bollworm activity detected in nearby farms. Consider organic neem oil spray.</p>
+                        <button class="insight-action" onclick="askQuestion('Tell me about pink bollworm control')">Learn More →</button>
+                    </div>
+
+                    <div class="insight-card alert-medium">
+                        <div class="insight-header">
+                            <span class="insight-icon">🌧️</span>
+                            <span class="insight-priority">Medium Priority</span>
+                        </div>
+                        <h3>Weather Update</h3>
+                        <p>Light rainfall expected in 3 days. Good time for soil preparation.</p>
+                        <button class="insight-action" onclick="askQuestion('What should I prepare for upcoming rain?')">Get Details →</button>
+                    </div>
+
+                    <div class="insight-card alert-low">
+                        <div class="insight-header">
+                            <span class="insight-icon">✅</span>
+                            <span class="insight-priority">Recommendation</span>
+                        </div>
+                        <h3>Optimal Timing</h3>
+                        <p>Cotton crop is in ideal stage for foliar spray. Consider organic compost tea.</p>
+                        <button class="insight-action" onclick="askQuestion('How to make compost tea?')">View Recipe →</button>
+                    </div>
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="demo-footer">
+        <div class="container">
+            <p>AgriSense AI Demo</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
